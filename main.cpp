@@ -13,8 +13,11 @@ int main() {
         setlocale(LC_ALL, "Russian");
         cout << "введите порядок уравнения (2,3 или 4)" << endl;
         if (!(cin >> equationType)) {
+            cin.clear();
+            while (cin.get() != '\n');
             cout << "неверный ввод" << endl;
         }
+
         cout << "для выхода введите y" << endl;
     } while(cin >> quit && quit != "y");
     return 0;
