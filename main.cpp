@@ -3,8 +3,20 @@
 using namespace std;                                                                                            //include conio.h +_getch();
 
 template < typename T >
-void fillArray ( T ** array , short N ) {
+void fillArray ( T ** array , short number ) {
+    for (int i = 0; i < number; i++) {
+        for(int j = 0; j<number+1; j++) {
+            array[i][j] = (T)4.3;
+        }
+    }
 
+    for (int i = 0; i < number; i++) {
+        for(int j = 0; j<number+1; j++) {
+            cout << array[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "privet" ;
 }
 
 int main() {
@@ -51,7 +63,6 @@ int main() {
 
         //TODO
         if (canContinue) {
-            // создание
             if (variableType == "float") {
                 // FLOAT
                 // Инициализация
@@ -60,6 +71,8 @@ int main() {
                 for (int i = 0; i < equationType; i++) {
                     arrayFloat[i] = new float [equationType+1];
                 }
+                // MARK: Заполнение:
+                fillArray(arrayFloat, equationType);
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
                     delete [] arrayFloat[i];
@@ -73,6 +86,8 @@ int main() {
                 for (int i = 0; i < equationType; i++) {
                     arrayShort[i] = new short [equationType+1];
                 }
+                // MARK: Заполнение:
+                fillArray(arrayShort, equationType);
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
                     delete [] arrayShort[i];
@@ -86,6 +101,8 @@ int main() {
                 for (int i = 0; i < equationType; i++) {
                     arrayDouble[i] = new double [equationType+1];
                 }
+                // MARK: Заполнение:
+                fillArray(arrayDouble, equationType);
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
                     delete [] arrayDouble[i];
