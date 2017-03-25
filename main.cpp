@@ -2,31 +2,44 @@
 
 using namespace std;                                                                                            //include conio.h +_getch();
 
-void getSolution(float ** array, short number) {
+// MARK: 3 перегрузочный функции
+float getSolution(float ** array, short number) {
+    float det;
     if (number == 2) {
-        float det = (array[0][0]*array[1][1]) - (array[0][1]);
+        det = (array[0][0]*array[1][1]) - (array[0][1]*array[1][0]);
+        if (det == 0 ) {
+            return (float)1;
+        }
+
     } else if (number ==3 ) {
-
+        det = (array[0][0]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][0]) +
+                (array[0][2]*array[1][0]*array[2][1]) - (array[0][0]*array[1][2]*array[2][1]) -
+                (array[0][1]*array[1][0]*array[2][2]) - (array[0][2]*array[1][1]*array[2][0]);
+        if (det == 0 ) {
+            return (float)1;
+        }
+        cout << det << endl;
     }
+    return (float)0;
 }
-
+// MARK: шаблонная функция
 template < typename T >
-void fillArray ( T ** array , short number ) {
+T fillArray ( T ** array , short number ) {
     for (int i = 0; i < number; i++) {
         for(int j = 0; j<number; j++) {
             cout << "a[" << i << "][" << j << "]= ";
-            while (!(cin >> array[i][j])) {
+            if(!(cin >> array[i][j])) {
                 cin.clear();
-                while(cin.get() != '\n');
-                cout << "a[" << i << "][" << j << "]= ";
+                while (cin.get() != '\n');
+                return (T)1;
             }
         }
         // дополнительный ввод для элементов 'b'
         cout << "b[" << i << "]= ";
-        while (!(cin >> array[i][number])) {
+        if (!(cin >> array[i][number])) {
             cin.clear();
-            while(cin.get() != '\n');
-            cout << "b[" << i << "]= ";
+            while (cin.get() != '\n');
+            return (T)1;
         }
     }
     // вывод эл
@@ -36,8 +49,10 @@ void fillArray ( T ** array , short number ) {
         }
         cout << endl;
     }
+    return (T)0;
 }
 
+// MARK: входная функция
 int main() {
     short equationType;
     string readForQuit;
@@ -91,7 +106,12 @@ int main() {
                     arrayFloat[i] = new float [equationType+1];
                 }
                 // Заполнение:
-                fillArray(arrayFloat, equationType);
+                if (fillArray(arrayFloat, equationType) !=0 ) {
+                    cout << "произошла ошибка ввода!" << endl;
+                }
+                if (getSolution(arrayFloat, equationType) !=0 ) {
+                    cout << "ошибка: детерминант = 0" << endl;
+                }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
                     delete [] arrayFloat[i];
@@ -106,7 +126,9 @@ int main() {
                     arrayShort[i] = new short [equationType+1];
                 }
                 // Заполнение:
-                fillArray(arrayShort, equationType);
+                if (fillArray(arrayShort, equationType)!=0) {
+                    cout << "произошла ошибка ввода!" << endl;
+                }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
                     delete [] arrayShort[i];
@@ -121,7 +143,9 @@ int main() {
                     arrayDouble[i] = new double [equationType+1];
                 }
                 // Заполнение:
-                fillArray(arrayDouble, equationType);
+                if (fillArray(arrayDouble, equationType)!=0) {
+                    cout << "произошла ошибка ввода!" << endl;
+                }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
                     delete [] arrayDouble[i];
