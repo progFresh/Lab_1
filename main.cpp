@@ -5,12 +5,17 @@ using namespace std;                                                            
 // MARK: 3 перегрузочный функции
 float getSolution(float ** array, short number) {
     float det;
+    float det1;
+    float det2;
+    float det3;
     if (number == 2) {
         det = (array[0][0]*array[1][1]) - (array[0][1]*array[1][0]);
         if (det == 0 ) {
             return (float)1;
         }
-
+        det1 = (array[0][2]*array[1][1]) - (array[0][1]*array[1][2]);
+        det2 = (array[0][0]*array[1][2]) - (array[0][2]*array[1][0]);
+        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl;
     } else if (number ==3 ) {
         det = (array[0][0]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][0]) +
                 (array[0][2]*array[1][0]*array[2][1]) - (array[0][0]*array[1][2]*array[2][1]) -
@@ -18,11 +23,10 @@ float getSolution(float ** array, short number) {
         if (det == 0 ) {
             return (float)1;
         }
-        cout << det << endl;
     }
     return (float)0;
 }
-// MARK: шаблонная функция
+// MARK: шаблонная функция 
 template < typename T >
 T fillArray ( T ** array , short number ) {
     for (int i = 0; i < number; i++) {
@@ -41,13 +45,6 @@ T fillArray ( T ** array , short number ) {
             while (cin.get() != '\n');
             return (T)1;
         }
-    }
-    // вывод эл
-    for (int i = 0; i < number; i++) {
-        for(int j = 0; j<number+1; j++) {
-            cout << array[i][j];
-        }
-        cout << endl;
     }
     return (T)0;
 }
