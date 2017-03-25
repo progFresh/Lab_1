@@ -2,6 +2,14 @@
 
 using namespace std;                                                                                            //include conio.h +_getch();
 
+void getSolution(float ** array, short number) {
+    if (number == 2) {
+        float det = (array[0][0]*array[1][1]) - (array[0][1]);
+    } else if (number ==3 ) {
+
+    }
+}
+
 template < typename T >
 void fillArray ( T ** array , short number ) {
     for (int i = 0; i < number; i++) {
@@ -43,14 +51,14 @@ int main() {
         cout << "\033[2J\033[1;1H";                                                                     // System("cls")
 
         // MARK: ввод порядка и проверка на корректность
-        cout << "введите порядок уравнения (2,3 или 4)" << endl;
+        cout << "введите порядок уравнения (2 или 3)" << endl;
         if (!(cin >> equationType)) {
             cin.clear();
             while (cin.get() != '\n');
             cout << "неверный ввод" << endl;
             canContinue = false;
         } else {
-            if (equationType != 2 && equationType != 3 && equationType != 4) {
+            if (equationType != 2 && equationType != 3 ) {
                 cout << "не могу решить задачу такого порядка :)" << endl;
                 canContinue = false;
             }
@@ -82,7 +90,7 @@ int main() {
                 for (int i = 0; i < equationType; i++) {
                     arrayFloat[i] = new float [equationType+1];
                 }
-                // MARK: Заполнение:
+                // Заполнение:
                 fillArray(arrayFloat, equationType);
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
@@ -97,7 +105,7 @@ int main() {
                 for (int i = 0; i < equationType; i++) {
                     arrayShort[i] = new short [equationType+1];
                 }
-                // MARK: Заполнение:
+                // Заполнение:
                 fillArray(arrayShort, equationType);
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
@@ -112,7 +120,7 @@ int main() {
                 for (int i = 0; i < equationType; i++) {
                     arrayDouble[i] = new double [equationType+1];
                 }
-                // MARK: Заполнение:
+                // Заполнение:
                 fillArray(arrayDouble, equationType);
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
