@@ -5,18 +5,29 @@ using namespace std;                                                            
 template < typename T >
 void fillArray ( T ** array , short number ) {
     for (int i = 0; i < number; i++) {
-        for(int j = 0; j<number+1; j++) {
-            array[i][j] = (T)4.3;
+        for(int j = 0; j<number; j++) {
+            cout << "a[" << i << "][" << j << "]= ";
+            while (!(cin >> array[i][j])) {
+                cin.clear();
+                while(cin.get() != '\n');
+                cout << "a[" << i << "][" << j << "]= ";
+            }
+        }
+        // дополнительный ввод для элементов 'b'
+        cout << "b[" << i << "]= ";
+        while (!(cin >> array[i][number])) {
+            cin.clear();
+            while(cin.get() != '\n');
+            cout << "b[" << i << "]= ";
         }
     }
-
+    // вывод эл
     for (int i = 0; i < number; i++) {
         for(int j = 0; j<number+1; j++) {
-            cout << array[i][j] << " ";
+            cout << array[i][j];
         }
         cout << endl;
     }
-    cout << "privet" ;
 }
 
 int main() {
