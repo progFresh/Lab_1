@@ -233,6 +233,9 @@ int main() {
                 if (fillArray(arrayDouble, equationType)!=0) {
                     cout << "произошла ошибка ввода!" << endl;
                 }
+                if (getSolution(arrayDouble, equationType) !=0 ) {
+                    cout << "ошибка: детерминант = 0" << endl;
+                }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
                     delete [] arrayDouble[i];
