@@ -1,6 +1,14 @@
 #include <iostream>
+#include <string>
 
-using namespace std;                                                                                            //include conio.h +_getch();
+using namespace std;
+
+int outputDescription () {
+    cout << "||Программа для решения СЛАУ 2 и 3 порядка ||" << endl;
+    cout << "||доступные типы данных: float,double,short||" << endl;
+    cout << "---------------------------------------------" << endl;
+    return 0;
+}
 
 // MARK: 3 перегрузочный функции
 float getSolution(float ** array, short number) {
@@ -15,7 +23,7 @@ float getSolution(float ** array, short number) {
         }
         det1 = (array[0][2]*array[1][1]) - (array[0][1]*array[1][2]);
         det2 = (array[0][0]*array[1][2]) - (array[0][2]*array[1][0]);
-        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl;
+        cout << "   x1 = " << det1/det << endl << "   x2 = " << det2/det << endl;
     } else if (number ==3 ) {
         det = (array[0][0]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][0]) +
                 (array[0][2]*array[1][0]*array[2][1]) - (array[0][0]*array[1][2]*array[2][1]) -
@@ -34,7 +42,7 @@ float getSolution(float ** array, short number) {
         det3 = (array[0][0]*array[1][1]*array[2][3]) + (array[0][1]*array[1][3]*array[2][0]) +
                (array[0][3]*array[1][0]*array[2][1]) - (array[0][0]*array[1][3]*array[2][1]) -
                (array[0][1]*array[1][0]*array[2][3]) - (array[0][3]*array[1][1]*array[2][0]);
-        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl << "x3 = " << det3/det << endl;
+        cout << "   x1 = " << det1/det << endl << "   x2 = " << det2/det << endl << "   x3 = " << det3/det << endl;
     }
     return (float)0;
 }
@@ -51,7 +59,7 @@ short getSolution(short ** array, short number) {
         }
         det1 = (array[0][2]*array[1][1]) - (array[0][1]*array[1][2]);
         det2 = (array[0][0]*array[1][2]) - (array[0][2]*array[1][0]);
-        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl;
+        cout << "   x1 = " << det1/det << endl << "   x2 = " << det2/det << endl;
 
     } else if (number ==3 ) {
         det = (array[0][0]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][0]) +
@@ -71,7 +79,7 @@ short getSolution(short ** array, short number) {
         det3 = (array[0][0]*array[1][1]*array[2][3]) + (array[0][1]*array[1][3]*array[2][0]) +
                (array[0][3]*array[1][0]*array[2][1]) - (array[0][0]*array[1][3]*array[2][1]) -
                (array[0][1]*array[1][0]*array[2][3]) - (array[0][3]*array[1][1]*array[2][0]);
-        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl << "x3 = " << det3/det << endl;
+        cout << "   x1 = " << det1/det << endl << "   x2 = " << det2/det << endl << "   x3 = " << det3/det << endl;
     }
     return (short)0;
 }
@@ -88,7 +96,7 @@ double getSolution(double ** array, short number) {
         }
         det1 = (array[0][2]*array[1][1]) - (array[0][1]*array[1][2]);
         det2 = (array[0][0]*array[1][2]) - (array[0][2]*array[1][0]);
-        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl;
+        cout << "   x1 = " << det1/det << endl << "   x2 = " << det2/det << endl;
 
     } else if (number ==3 ) {
         det = (array[0][0]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][0]) +
@@ -108,7 +116,7 @@ double getSolution(double ** array, short number) {
         det3 = (array[0][0]*array[1][1]*array[2][3]) + (array[0][1]*array[1][3]*array[2][0]) +
                (array[0][3]*array[1][0]*array[2][1]) - (array[0][0]*array[1][3]*array[2][1]) -
                (array[0][1]*array[1][0]*array[2][3]) - (array[0][3]*array[1][1]*array[2][0]);
-        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl << "x3 = " << det3/det << endl;
+        cout << "   x1 = " << det1/det << endl << "   x2 = " << det2/det << endl << "   x3 = " << det3/det << endl;
     }
     return (double)0;
 }
@@ -144,10 +152,11 @@ int main() {
     bool canContinue;
 
     setlocale(LC_ALL, "Russian");
+    outputDescription();
 
     do {
         canContinue = true;
-        cout << "\033[2J\033[1;1H";                                                                     // System("cls")
+        // System("cls")
 
         // MARK: ввод порядка и проверка на корректность
         cout << "введите порядок уравнения (2 или 3)" << endl;
@@ -192,9 +201,12 @@ int main() {
                 // Заполнение:
                 if (fillArray(arrayFloat, equationType) !=0 ) {
                     cout << "произошла ошибка ввода!" << endl;
+                    canContinue = false;
                 }
-                if (getSolution(arrayFloat, equationType) !=0 ) {
-                    cout << "ошибка: детерминант = 0" << endl;
+                if (canContinue) {
+                    if (getSolution(arrayFloat, equationType) !=0 ) {
+                        cout << "ошибка: детерминант = 0" << endl;
+                    }
                 }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
@@ -212,9 +224,12 @@ int main() {
                 // Заполнение:
                 if (fillArray(arrayShort, equationType)!=0) {
                     cout << "произошла ошибка ввода!" << endl;
+                    canContinue = false;
                 }
-                if (getSolution(arrayShort, equationType) !=0 ) {
-                    cout << "ошибка: детерминант = 0" << endl;
+                if (canContinue) {
+                    if (getSolution(arrayShort, equationType) !=0 ) {
+                        cout << "ошибка: детерминант = 0" << endl;
+                    }
                 }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
@@ -232,9 +247,12 @@ int main() {
                 // Заполнение:
                 if (fillArray(arrayDouble, equationType)!=0) {
                     cout << "произошла ошибка ввода!" << endl;
+                    canContinue = false;
                 }
-                if (getSolution(arrayDouble, equationType) !=0 ) {
-                    cout << "ошибка: детерминант = 0" << endl;
+                if (canContinue) {
+                    if (getSolution(arrayDouble, equationType) !=0 ) {
+                        cout << "ошибка: детерминант = 0" << endl;
+                    }
                 }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
@@ -243,7 +261,7 @@ int main() {
                 delete [] arrayDouble;
             }
         }
-        cout << "для выхода введите \'y\'" << endl;
+        cout << "для выхода введите \'y\', для продолжения любую другую клавишу" << endl;
     } while(cin >> readForQuit && readForQuit != "y");
 
     return 0;
