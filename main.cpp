@@ -23,9 +23,96 @@ float getSolution(float ** array, short number) {
         if (det == 0 ) {
             return (float)1;
         }
+        det1 = (array[0][3]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][3]) +
+               (array[0][2]*array[1][3]*array[2][1]) - (array[0][3]*array[1][2]*array[2][1]) -
+               (array[0][1]*array[1][3]*array[2][2]) - (array[0][2]*array[1][1]*array[2][3]);
+
+        det2 = (array[0][0]*array[1][3]*array[2][2]) + (array[0][3]*array[1][2]*array[2][0]) +
+               (array[0][2]*array[1][0]*array[2][3]) - (array[0][0]*array[1][2]*array[2][3]) -
+               (array[0][3]*array[1][0]*array[2][2]) - (array[0][2]*array[1][3]*array[2][0]);
+
+        det3 = (array[0][0]*array[1][1]*array[2][3]) + (array[0][1]*array[1][3]*array[2][0]) +
+               (array[0][3]*array[1][0]*array[2][1]) - (array[0][0]*array[1][3]*array[2][1]) -
+               (array[0][1]*array[1][0]*array[2][3]) - (array[0][3]*array[1][1]*array[2][0]);
+        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl << "x3 = " << det3/det << endl;
     }
     return (float)0;
 }
+
+short getSolution(short ** array, short number) {
+    short det;
+    short det1;
+    short det2;
+    short det3;
+    if (number == 2) {
+        det = (array[0][0]*array[1][1]) - (array[0][1]*array[1][0]);
+        if (det == 0 ) {
+            return (short)1;
+        }
+        det1 = (array[0][2]*array[1][1]) - (array[0][1]*array[1][2]);
+        det2 = (array[0][0]*array[1][2]) - (array[0][2]*array[1][0]);
+        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl;
+
+    } else if (number ==3 ) {
+        det = (array[0][0]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][0]) +
+              (array[0][2]*array[1][0]*array[2][1]) - (array[0][0]*array[1][2]*array[2][1]) -
+              (array[0][1]*array[1][0]*array[2][2]) - (array[0][2]*array[1][1]*array[2][0]);
+        if (det == 0 ) {
+            return (short)1;
+        }
+        det1 = (array[0][3]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][3]) +
+               (array[0][2]*array[1][3]*array[2][1]) - (array[0][3]*array[1][2]*array[2][1]) -
+               (array[0][1]*array[1][3]*array[2][2]) - (array[0][2]*array[1][1]*array[2][3]);
+
+        det2 = (array[0][0]*array[1][3]*array[2][2]) + (array[0][3]*array[1][2]*array[2][0]) +
+               (array[0][2]*array[1][0]*array[2][3]) - (array[0][0]*array[1][2]*array[2][3]) -
+               (array[0][3]*array[1][0]*array[2][2]) - (array[0][2]*array[1][3]*array[2][0]);
+
+        det3 = (array[0][0]*array[1][1]*array[2][3]) + (array[0][1]*array[1][3]*array[2][0]) +
+               (array[0][3]*array[1][0]*array[2][1]) - (array[0][0]*array[1][3]*array[2][1]) -
+               (array[0][1]*array[1][0]*array[2][3]) - (array[0][3]*array[1][1]*array[2][0]);
+        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl << "x3 = " << det3/det << endl;
+    }
+    return (short)0;
+}
+
+double getSolution(double ** array, short number) {
+    double det;
+    double det1;
+    double det2;
+    double det3;
+    if (number == 2) {
+        det = (array[0][0]*array[1][1]) - (array[0][1]*array[1][0]);
+        if (det == 0 ) {
+            return (double)1;
+        }
+        det1 = (array[0][2]*array[1][1]) - (array[0][1]*array[1][2]);
+        det2 = (array[0][0]*array[1][2]) - (array[0][2]*array[1][0]);
+        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl;
+
+    } else if (number ==3 ) {
+        det = (array[0][0]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][0]) +
+              (array[0][2]*array[1][0]*array[2][1]) - (array[0][0]*array[1][2]*array[2][1]) -
+              (array[0][1]*array[1][0]*array[2][2]) - (array[0][2]*array[1][1]*array[2][0]);
+        if (det == 0 ) {
+            return (double)1;
+        }
+        det1 = (array[0][3]*array[1][1]*array[2][2]) + (array[0][1]*array[1][2]*array[2][3]) +
+               (array[0][2]*array[1][3]*array[2][1]) - (array[0][3]*array[1][2]*array[2][1]) -
+               (array[0][1]*array[1][3]*array[2][2]) - (array[0][2]*array[1][1]*array[2][3]);
+
+        det2 = (array[0][0]*array[1][3]*array[2][2]) + (array[0][3]*array[1][2]*array[2][0]) +
+               (array[0][2]*array[1][0]*array[2][3]) - (array[0][0]*array[1][2]*array[2][3]) -
+               (array[0][3]*array[1][0]*array[2][2]) - (array[0][2]*array[1][3]*array[2][0]);
+
+        det3 = (array[0][0]*array[1][1]*array[2][3]) + (array[0][1]*array[1][3]*array[2][0]) +
+               (array[0][3]*array[1][0]*array[2][1]) - (array[0][0]*array[1][3]*array[2][1]) -
+               (array[0][1]*array[1][0]*array[2][3]) - (array[0][3]*array[1][1]*array[2][0]);
+        cout << "x1 = " << det1/det << endl << "x2 = " << det2/det << endl << "x3 = " << det3/det << endl;
+    }
+    return (double)0;
+}
+
 // MARK: шаблонная функция 
 template < typename T >
 T fillArray ( T ** array , short number ) {
@@ -125,6 +212,9 @@ int main() {
                 // Заполнение:
                 if (fillArray(arrayShort, equationType)!=0) {
                     cout << "произошла ошибка ввода!" << endl;
+                }
+                if (getSolution(arrayShort, equationType) !=0 ) {
+                    cout << "ошибка: детерминант = 0" << endl;
                 }
                 // Удаление:
                 for (int i = 0; i < equationType; i++) {
